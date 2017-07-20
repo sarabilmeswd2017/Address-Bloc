@@ -14,7 +14,8 @@ require_relative '../models/address_book'
      puts "2 - Create an entry"
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
-     puts "5 - Exit"
+     puts "5 - View entry n"
+     puts "6 - Exit"
      print "Enter your selection: "
 
      # #3
@@ -37,6 +38,10 @@ require_relative '../models/address_book'
          read_csv
          main_menu
        when 5
+         system "clear"
+         entry_n_submenu
+         main_menu
+       when 6
          puts "Good-bye!"
          # #8
          exit(0)
@@ -45,6 +50,21 @@ require_relative '../models/address_book'
          system "clear"
          puts "Sorry, that is not a valid input"
          main_menu
+     end
+   end
+
+   def entry_n_submenu
+     print "Entry Number to View:"
+     selection = gets.chomp.to_i
+
+     if selection < @address_book.entries.count
+       puts @address_book.entries[selection]
+       puts "Press enter to return to main menu"
+       gets.chomp
+       system "clear"
+     else
+       puts "#{selection} is not a valid input"
+       entry_n_submenu
      end
    end
 
@@ -70,7 +90,7 @@ require_relative '../models/address_book'
      print "Email: "
      email = gets.chomp
 
-     address_book.add_entry(name, phone_number, email)
+     address_book.add_entry(name, phone, email)
 
      system "clear"
      puts "New entry created"

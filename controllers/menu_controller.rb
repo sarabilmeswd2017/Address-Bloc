@@ -144,10 +144,6 @@ require_relative '../models/address_book'
      end
    end
 
-
-   def read_csv
-   end
-
    def entry_submenu(entry)
      # #16
      puts "n - next entry"

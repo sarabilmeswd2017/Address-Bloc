@@ -35,7 +35,7 @@ class AddressBook
 
 
   def demolish_entries
-    entries = []
+    @entries = []
   end
 
   def import_from_csv(file_name)
